@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pareto - Ferramentas da Qualidade</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./css/spectrum.css" />
+    <link rel="stylesheet" type="text/css" href="./css/datatables.css" />
+    <link rel="stylesheet" type="text/css" href="./css/btnswitch.css" />
+    <link rel="stylesheet" type="text/css" href="./css/util.css" />
+    <link rel="stylesheet" type="text/css" href="./fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="./vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+    
+
+</head>
+
+<body>
+    
+    <h2 class="title_page">Teste</h2>
+    <div class="content">
+        <div class="ziehharmonika">
+            <!--## CONFIGURAÇÔES BASICAS ##-->
+            <h3>Configurações Básicas</h3>
+            <div>
+
+            </div>
+
+            <!--## CONFIGURAÇÔES AVANCADAS ##-->
+            <h3>Dados</h3>
+            <div>
+                <table id="tableDados" class="table table-hover table-striped fs-18 display nowrap">
+                    <colgroup>
+                        <col span="1" style="width: 50%; text-align: left;">
+                        <col span="1" style="width: 20%; text-align: center;">
+                        <col span="1" style="width: 20%; text-align: center;">
+                        <col span="1" style="width: 20%; text-align: center;">
+                    </colgroup>
+
+                    <thead>
+                        <th>Info</th>
+                        <th class=>Valor</th>
+                        <th>Editar</th>
+                        <th>Excluir</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Teste</td>
+                            <td>50</td>
+                            <td>
+                                <button type='button' class='shadow-sm rounded btn btn-outline-warning btn-sm m-l-20 shadow2'>
+									<i class='fa fa-trash-o'></i>
+								</button>
+                            </td>
+                            <td><button>Excluir</button></td>
+                        </tr>
+                        <tr>
+                            <td>Teste</td>
+                            <td>50</td>
+                            <td><button>Editar</button></td>
+                            <td><button>Excluir</button></td>
+                        </tr>
+                        <tr>
+                            <td>Teste</td>
+                            <td>50</td>
+                            <td><button>Editar</button></td>
+                            <td><button>Excluir</button></td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!--## CONFIGURAÇÔES AVANCADAS ##-->
+            <h3>Configurações Avançadas</h3>
+            <div>
+
+            </div>
+
+            <!--## GRAFICO ##-->
+            <h3>Pareto</h3>
+            <div>
+                <div id="graph"></div>
+            </div>
+
+        </div>
+    </div>
+    <p>UFPR</p>
+    <script src="./js/jquery.js"></script>
+    <script type="text/javascript" src="./vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./charts/code/highcharts.js"></script>
+    <script src="./charts/code/modules/pareto.js"></script>
+    <script src="./js/pareto.js"></script>
+    <script src="./js/acordion.js"></script>
+    <script src="./js/mask.js"></script>
+    <script src="./js/btnswitch.js"></script>
+    <script src="./js/spectrum.js"></script>
+    <script src="./js/datatables.js"></script>
+    <script type="text/javascript">
+        var body = $("html, body");
+        $(".ziehharmonika").ziehharmonika({
+            highlander: false,
+            collapsible: true,
+            scroll: false
+        });
+        //$('.ziehharmonika h3:eq(3)').ziehharmonika('open');
+        //$('.ziehharmonika h3:eq(0)').ziehharmonika('open');
+        
+        $('#tableDados').DataTable({
+			"info": false,
+            "paging": false,
+            "order": [ 1, "desc" ],
+            dom: 'Bfrtip',
+            buttons: ['csv', 'excel'],
+            rowReorder: {
+                    selector: 'td:nth-child(2)'
+            }
+		});
+        $("#teste").click(function () {
+            if ($("nome").val() != "" && $("valor").val() != "") {
+                categories.push($("#nome").val());
+                data.push($("#valor").val());
+
+                console.log(categories);
+                console.log(data);
+
+                chart.update({
+                    xAxis: {
+                        categories: categories,
+                    },
+                    series: [{
+                        yAxis: 1,
+                        zIndex: 10,
+                        baseSeries: 1
+                    }, {
+                        data: data
+                    }]
+                });
+            }
+
+        });
+        body.stop().animate({scrollTop:0}, 500, 'swing');
+    </script>
+    
+</body>
+
+</html>
