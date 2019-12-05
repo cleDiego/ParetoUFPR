@@ -11,15 +11,6 @@ h2, h3, p{
     text-align: center;
 }
 
-a, .fa {
-	color: #9652B1;
-	cursor: pointer;
-	font-size: 18px;
-}
-a:hover, .fa:hover {
-	color: #52B196;
-}
-
 .title_page {
 	margin-bottom: 40px;
 }
@@ -37,17 +28,32 @@ input:hover, input:focus {
     background: #fff;
 }
 
+
+/*
 button {
     padding: 5px 25px 5px 25px; 
+    background: #c8c0d3;
     color: #555;
     border: 1px solid #7b5baf;
     border-radius: 4px;
     outline: none;
     font-size: 16px;
     cursor: pointer;
-	font-weight: bold;
+    font-weight: bold;
+}
+button:hover {
+    background: #7b5baf;
+    color: #fff;
+}*/
+
+button {
 	outline: none !important;
 	border: none;
+	background: transparent;
+}
+
+button:hover {
+	cursor: pointer;
 }
 
 .content {
@@ -68,8 +74,8 @@ button {
 
 .table {
     font-size: 18px;
-	border-radius: 4px;
-	background: #BAD4CC;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
 
@@ -94,9 +100,9 @@ button {
 	border-top: 3px solid #8c6bc2;
 }
 .ziehharmonika h3.active {
+	margin-bottom: 21px;
 	background: #ddd;
-	border-top-color: #8c6bc2;
-	margin-bottom: 3px;
+    border-top-color: #8c6bc2;
 }
 .ziehharmonika h3:hover {
     border-top-color: #8c6bc2;
@@ -117,24 +123,24 @@ button {
     border: 1px solid #b5a9c8;
     box-shadow: 0px 0px 4px -1px rgba(0,0,0,0.20);
     border-radius: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 9px;
+    margin-top: -10px;
 }
 .ziehharmonika .arrowDown {
 	width: 0;
 	height: 0;
 	border-style: solid;
-	border-width: 20px 16.5px 0px 13.5px;
-	border-color: #ddd transparent transparent transparent;
+	border-width: 13.0px 7.5px 0 7.5px;
+	border-color: #8c6bc2 transparent transparent transparent;
 	position: absolute;
 	bottom: 0;
 	left: 40px;
-	top: 37px;
 	transition: 0.25s all;
 	opacity: 0;
 }
 .ziehharmonika .active .arrowDown {
 	bottom: -13px;
-	border-color: #ddd transparent transparent transparent;
+	border-color: #8c6bc2 transparent transparent transparent;
 	opacity: 1;
 }
 .ziehharmonika .collapseIcon {

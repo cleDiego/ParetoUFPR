@@ -23,41 +23,64 @@
     <div class="content">
         <div class="ziehharmonika">
             <!--## CONFIGURAÇÔES BASICAS ##-->
-            <h3><i class='fa fa-cogs p-r-10'></i> Configurações Básicas</h3>
+            <h3>Configurações Básicas</h3>
             <div>
 
             </div>
 
             <!--## CONFIGURAÇÔES AVANCADAS ##-->
-            <h3><i class='fa fa-table p-r-10'></i>  Dados</h3>
+            <h3>Dados</h3>
             <div>
                 <table id="tableDados" class="table table-hover table-striped fs-18 display nowrap">
                     <colgroup>
-                        <col span="1" style="width: 50%;">
-                        <col span="1" style="width: 20%;">
-                        <col span="1" style="width: 20%;">
-                        <col span="1" style="width: 20%;">
+                        <col span="1" style="width: 50%; text-align: left;">
+                        <col span="1" style="width: 20%; text-align: center;">
+                        <col span="1" style="width: 20%; text-align: center;">
+                        <col span="1" style="width: 20%; text-align: center;">
                     </colgroup>
 
                     <thead>
                         <th>Info</th>
-                        <th class="text-center">Valor</th>
-                        <th class="text-center">Editar</th>
-                        <th class="text-center">Excluir</th>
+                        <th class=>Valor</th>
+                        <th>Editar</th>
+                        <th>Excluir</th>
                     </thead>
                     <tbody>
+                        <tr>
+                            <td>Teste</td>
+                            <td>50</td>
+                            <td>
+                                <button type='button' class='shadow-sm rounded btn btn-outline-warning btn-sm m-l-20 shadow2'>
+									<i class='fa fa-trash-o'></i>
+								</button>
+                            </td>
+                            <td><button>Excluir</button></td>
+                        </tr>
+                        <tr>
+                            <td>Teste</td>
+                            <td>50</td>
+                            <td><button>Editar</button></td>
+                            <td><button>Excluir</button></td>
+                        </tr>
+                        <tr>
+                            <td>Teste</td>
+                            <td>50</td>
+                            <td><button>Editar</button></td>
+                            <td><button>Excluir</button></td>
+                            
+                        </tr>
                     </tbody>
                 </table>
             </div>
 
             <!--## CONFIGURAÇÔES AVANCADAS ##-->
-            <h3><i class='fa fa-sliders p-r-10'></i> Configurações Avançadas</h3>
+            <h3>Configurações Avançadas</h3>
             <div>
 
             </div>
 
             <!--## GRAFICO ##-->
-            <h3><i class='fa fa-bar-chart p-r-10'></i> Pareto</h3>
+            <h3>Pareto</h3>
             <div>
                 <div id="graph"></div>
             </div>
@@ -86,9 +109,14 @@
         //$('.ziehharmonika h3:eq(0)').ziehharmonika('open');
         
         $('#tableDados').DataTable({
-			"info": true,
+			"info": false,
             "paging": false,
-            "order": [ 1, "desc" ]
+            "order": [ 1, "desc" ],
+            dom: 'Bfrtip',
+            buttons: ['csv', 'excel'],
+            rowReorder: {
+                    selector: 'td:nth-child(2)'
+            }
 		});
         $("#teste").click(function () {
             if ($("nome").val() != "" && $("valor").val() != "") {

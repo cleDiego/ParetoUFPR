@@ -22,19 +22,6 @@ var dados = {
     classeC: 0 //5%
 };
 
-$.each(dados.data, function( index, value ) {
-    let tr = 
-    "<tr>"
-    +"<td>"+value.t+"</td>"
-    +"<td class='text-center'>"+value.d+"</td>"
-    +"<td class='text-center'><a href='#'></a><i class='fa fa-pencil-square-o'></i></a></td>"
-    +"<td class='text-center'><a href='#'></a><i class='fa fa-trash-o danger'></i></a></td>"
-    +"</tr>";
-
-    $("#tableDados tbody").append(tr);
-});
-$('#tableDados').data.reload();
-
 dados.classeA = dados.data.length*0.2;
 dados.classeB = dados.data.length*0.5;
 
