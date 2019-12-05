@@ -1,3 +1,19 @@
+var body = $("html, body");
+var t = $("#tableDados").DataTable({
+    "info": true,
+    "paging": false,
+    "order": []
+});
+
+$(".ziehharmonika").ziehharmonika({
+    highlander: false,
+    collapsible: true,
+    scroll: false
+});
+//$('.ziehharmonika h3:eq(3)').ziehharmonika('open');
+//$('.ziehharmonika h3:eq(0)').ziehharmonika('open');
+        
+
 var dados = {
     title: 'Motivos de cancelamento/devolução de pedidos em Nov/19',
     xAxisTitleLeft: 'Frequência em quantidade',
@@ -22,39 +38,20 @@ var dados = {
     classeC: 0 //5%
 };
 
-$.each(dados.data, function( index, value ) {
-    let tr = 
-    "<tr>"
-    +"<td>"+value.t+"</td>"
-    +"<td class='text-center'>"+value.d+"</td>"
-    +"<td class='text-center'><a href='#'></a><i class='fa fa-pencil-square-o'></i></a></td>"
-    +"<td class='text-center'><a href='#'></a><i class='fa fa-trash-o danger'></i></a></td>"
-    +"</tr>";
-
-    $("#tableDados tbody").append(tr);
-});
-$('#tableDados').data.reload();
 
 dados.classeA = dados.data.length*0.2;
 dados.classeB = dados.data.length*0.5;
 
-console.log(dados);
+sortDesc();
+tableUpdate();
 
-dados.data.sort(function(a,b){
-    if(a.d < b.d) return 1
-    if(a.d > b.d) return -1
-    return 0;
- });
-console.log(dados);
+
 
 var categories = []; var values = [];
 $.each(dados.data, function( index, value ) {
     categories.push(value.t);
     values.push(value.d);
 });
-console.log(categories);
-console.log(values);
-
 
 
 var chart = Highcharts.chart('graph', {
@@ -80,3 +77,60 @@ var chart = Highcharts.chart('graph', {
         { name: dados.seriesValName, type: 'column', zIndex: 2,  data: values  }]
 });
 
+
+$("#rowInsert").click(function() {
+    let name = $("#nameInsert").val();
+    let value = parseInt($("#valueInsert").val());
+    let pos = dados.data.push({t: name, d: value});
+    sortDesc();
+    insertRow();
+    charUpdate();
+});
+
+$("td a.remove").click(function() {
+    let index = $(this).attr('data');
+    let dataRemove = dados.data[index];
+    alert(dados.data.slice(index, 1));
+    tableUpdate();
+    charUpdate();
+});
+
+$("td a.edit").click(function() {
+    let index = $(this).attr('data');
+    let dataEdit = dados.data[index];
+});
+
+function sortDesc(){
+    dados.data.sort(function(a,b){
+        if(a.d < b.d) return 1
+        if(a.d > b.d) return -1
+        return 0;
+    });
+}
+
+function tableUpdate() {
+    t.clear();
+    $.each(dados.data, function( index, value ) {
+        t.row.add([
+            value.t, value.d, 
+            "<a href='#' class='edit' data='"+index+"'><i class='fa fa-pencil-square-o'></i></a>", 
+            "<a href='#' class='remove' data='"+index+"'><i class='fa fa-trash-o danger'></i></a>"
+        ]).draw(true);
+    });
+}
+
+function charUpdate() {
+    categories = []; values = [];
+    $.each(dados.data, function( index, value ) {
+        categories.push(value.t);
+        values.push(value.d);
+    });
+
+    chart.update({
+        xAxis: { categories: categories },
+        series: [
+            { yAxis: 1, zIndex: 10, baseSeries: 1 }, 
+            { data: values }
+        ]
+    });
+}
