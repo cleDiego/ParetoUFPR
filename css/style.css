@@ -1,14 +1,23 @@
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: Montserrat-Regular, sans-serif;
     font-size: 16px;
     margin: 0; padding: 20px;
     background: #f2f2f2;
-    color: #555;
+    color: #666;
 }
 
 h2, h3, p{
     text-align: center;
+}
+
+a {
+	color: #9652B1;
+	cursor: pointer;
+	font-size: 18px;
+}
+a:hover, .fa:hover {
+	color: #52B196;
 }
 
 .title_page {
@@ -23,37 +32,25 @@ input {
     outline: none;
     font-size: 16px;
 }
+
 input:hover, input:focus {
-    border-color: #a593c3;
-    background: #fff;
+	border-color: #a593c3 !important;
+	box-shadow: none;
+	background: #fff;
+	outline: none;
 }
 
-
-/*
 button {
     padding: 5px 25px 5px 25px; 
-    background: #c8c0d3;
     color: #555;
     border: 1px solid #7b5baf;
     border-radius: 4px;
     outline: none;
     font-size: 16px;
     cursor: pointer;
-    font-weight: bold;
-}
-button:hover {
-    background: #7b5baf;
-    color: #fff;
-}*/
-
-button {
+	font-weight: bold;
 	outline: none !important;
 	border: none;
-	background: transparent;
-}
-
-button:hover {
-	cursor: pointer;
 }
 
 .content {
@@ -74,8 +71,16 @@ button:hover {
 
 .table {
     font-size: 18px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+	border-radius: 4px;
+	background: #BAD4CC;
+}
+
+.table tbody tr td {
+	text-align: center;
+}
+
+.table tbody tr td:first-child {
+	text-align: left;
 }
 
 
@@ -100,9 +105,9 @@ button:hover {
 	border-top: 3px solid #8c6bc2;
 }
 .ziehharmonika h3.active {
-	margin-bottom: 21px;
 	background: #ddd;
-    border-top-color: #8c6bc2;
+	border-top-color: #8c6bc2;
+	margin-bottom: 3px;
 }
 .ziehharmonika h3:hover {
     border-top-color: #8c6bc2;
@@ -123,24 +128,24 @@ button:hover {
     border: 1px solid #b5a9c8;
     box-shadow: 0px 0px 4px -1px rgba(0,0,0,0.20);
     border-radius: 10px;
-    margin-bottom: 9px;
-    margin-top: -10px;
+    margin-bottom: 15px;
 }
 .ziehharmonika .arrowDown {
 	width: 0;
 	height: 0;
 	border-style: solid;
-	border-width: 13.0px 7.5px 0 7.5px;
-	border-color: #8c6bc2 transparent transparent transparent;
+	border-width: 20px 16.5px 0px 13.5px;
+	border-color: #ddd transparent transparent transparent;
 	position: absolute;
 	bottom: 0;
 	left: 40px;
+	top: 37px;
 	transition: 0.25s all;
 	opacity: 0;
 }
 .ziehharmonika .active .arrowDown {
 	bottom: -13px;
-	border-color: #8c6bc2 transparent transparent transparent;
+	border-color: #ddd transparent transparent transparent;
 	opacity: 1;
 }
 .ziehharmonika .collapseIcon {
