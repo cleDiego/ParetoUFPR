@@ -16,7 +16,7 @@ a {
 	cursor: pointer;
 	font-size: 18px;
 }
-a:hover, .fa:hover {
+a:hover {
 	color: #52B196;
 }
 
@@ -83,6 +83,15 @@ button {
 	text-align: left;
 }
 
+.alerts {
+	position: fixed;
+	width: 800px;
+	left: 50%;
+    transform: translate(-50%, 0);
+	top: 0;
+	z-index: 20;
+	text-align: center;
+}
 
 /*accordion
 @author Tim himself */
