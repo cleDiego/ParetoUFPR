@@ -35,39 +35,39 @@
             <div>
                 
                 <div class="col-12 m-t-20 m-b-40">
-                    <div id="formInsert" class="row">
+                    <form id="formInsert" class="row">
                         <div class="col-12">
                             <h5>Inserir dados:</h5>
                         </div>
                         <div class="col-5">
-                            <input id="nameInsert" type="text" class="form-control" placeholder="Nome">
+                            <input id="nameInsert" type="text" class="form-control" required placeholder="Nome">
                         </div>
                         <div class="col-2">
-                            <input id="valueInsert" type="number" class="form-control" placeholder="Valor">
+                            <input id="valueInsert" type="number" class="form-control" required placeholder="Valor">
                         </div>
                         <div class="col-3">
-                            <button id="rowInsert" class="btn btn-md btn-outline-primary"><i class="fa fa-check"></i> INSERIR</button>
+                            <button type="submit" class="btn btn-md btn-outline-primary"><i class="fa fa-check"></i> INSERIR</button>
                         </div>
-                    </div>
+                    </form>
 
-                    <div id="formUpdate" class="row" style="display: none;">
+                    <form id="formUpdate" class="row" style="display: none;">
                         <div class="col-12">
                             <h5>Atualizar dados:</h5>
                         </div>
                         <div class="col-1">
-                            <input id="idUpdate" type="number" class="form-control" disabled>
+                            <input id="idUpdate" type="number" class="form-control" required disabled>
                         </div>
                         <div class="col-5">
-                            <input id="nameUpdate" type="text" class="form-control" placeholder="Nome">
+                            <input id="nameUpdate" type="text" class="form-control" required placeholder="Nome">
                         </div>
                         <div class="col-2">
-                            <input id="valueUpdate" type="number" class="form-control" placeholder="Valor">
+                            <input id="valueUpdate" type="number" class="form-control" required placeholder="Valor">
                         </div>
                         <div class="col-4">
-                            <button id="rowUpdate" class="btn btn-md btn-outline-primary shadow2"><i class="fa fa-check"></i> SALVAR</button>
-                            <button id="rowUpdateCancel" class="btn btn-md btn-outline-secondary shadow2"><i class="fa fa-ban"></i> CANCELAR</button>
+                            <button type="submit" id="rowUpdate" class="btn btn-md btn-outline-primary shadow2"><i class="fa fa-check"></i> SALVAR</button>
+                            <button type="button" id="rowUpdateCancel" class="btn btn-md btn-outline-secondary shadow2"><i class="fa fa-ban"></i> CANCELAR</button>
                         </div>
-                    </div>
+                    </form>
                     
                 </div>
                 <table id="tableDados" class="table table-hover table-striped fs-18 display nowrap">
@@ -115,6 +115,7 @@
     <script src="./js/btnswitch.js"></script>
     <script src="./js/spectrum.js"></script>
     <script src="./js/datatables.js"></script>
+    <script src="./js/sweetalert.js"></script>
     <script src="./js/pareto.js"></script>
     
 </body>

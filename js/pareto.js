@@ -113,7 +113,7 @@ function charUpdate() {
     });
 }
 
-$("#rowInsert").click(function() {
+$("#formInsert").submit(function(e) {
     let name = $("#nameInsert").val();
     let ok = true;
     $.each(dados.data, function( index, value ) {
@@ -128,47 +128,50 @@ $("#rowInsert").click(function() {
         sortDesc();
         tableUpdate();
         charUpdate();
+        alerts('success', name + ' adicionado com sucesso!', 2);
     } else {
-        alert(name + " já existe no gráfico, tente um nome diferente!");
-    } 
-});
-
-
-$(document).on('click', '#tableDados td a.remove', function(e) {
-    let index = $(this).attr('data');
-    let dataRemove = dados.data[index];
-    if(confirm("Deseja mesmo remover " + dataRemove.t + ":" + dataRemove.d + " ?")){
-        let remove = dados.data.splice(index, 1);
-        tableUpdate();
-        charUpdate();
-        $("#alerts").html(
-            '<div class="alert alert-info alert-dismissible fade show shadow2" role="alert">'
-            +'<strong>'+ dataRemove.t  +', removido com sucesso!</strong> '
-            +'<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
-            +'<span aria-hidden="true">&times;</span>'
-            +'</button>'
-            +'</div>'
-        );
+        alerts('danger', name + ' já existe no gráfico, tente um nome diferente!', 2);
     }
     e.preventDefault();
 });
 
-$("#rowUpdate").click(function() {
+$("#formUpdate").submit(function(e) {
     let name = $("#nameUpdate").val();
     let value = $("#valueUpdate").val();
     let index = $("#idUpdate").val();
     dados.data[index] = {t: name, d: value};
     tableUpdate();
     charUpdate();
-    $("#alerts").html(
-        '<div class="alert alert-info alert-dismissible fade show shadow2" role="alert">'
-        +'<strong>'+ name  +':' + value + ', atualizado com sucesso!</strong> '
-        +'<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
-        +'<span aria-hidden="true">&times;</span>'
-        +'</button>'
-        +'</div>'
-    );
+    alerts('success', name  +':' + value + ', atualizado com sucesso!', 2);
+    e.preventDefault();
 });
+
+
+$(document).on('click', '#tableDados td a.remove', function(e) {
+    let index = $(this).attr('data');
+    let dataRemove = dados.data[index];
+
+    swal({
+        title: "Tem certeza?",
+        text: "Deseja mesmo remover " + dataRemove.t + ":" + dataRemove.d + " ?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+    .then((res) => {
+        if (res) {
+            let remove = dados.data.splice(index, 1);
+            tableUpdate();
+            charUpdate();
+            alerts('success', dataRemove.t  +', removido com sucesso!', 2);
+        } else {
+            $("#alerts").html("");
+        }
+    });
+    e.preventDefault();
+});
+
+
 
 $("#rowUpdateCancel").click(function() {
     $("#formInsert").show("fast");
@@ -195,3 +198,17 @@ $(document).on('click', '#tableDados td a.edit', function(e) {
 $(window).bind('beforeunload', function(){
     return "teste";
 });
+
+function alerts(type, msg, time) {
+    $("#alerts").html(
+        '<div class="alert alert-'+ type +' alert-dismissible fade show shadow2" role="alert">'
+        +'<strong>'+ msg +'</strong> '
+        +'<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
+        +'<span aria-hidden="true">&times;</span>'
+        +'</button>'
+        +'</div>'
+    );
+    setTimeout(function() {
+        $(".alert").alert('close');
+    }, time);
+}
