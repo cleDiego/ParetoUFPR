@@ -45,13 +45,12 @@ dados.classeB = dados.data.length*0.5;
 sortDesc();
 tableUpdate();
 
-
-
-var categories = []; var values = [];
+categories = []; values = [];
 $.each(dados.data, function( index, value ) {
     categories.push(value.t);
     values.push(value.d);
 });
+
 
 
 var chart = Highcharts.chart('graph', {
@@ -78,27 +77,6 @@ var chart = Highcharts.chart('graph', {
 });
 
 
-$("#rowInsert").click(function() {
-    let name = $("#nameInsert").val();
-    let value = parseInt($("#valueInsert").val());
-    let pos = dados.data.push({t: name, d: value});
-    sortDesc();
-    insertRow();
-    charUpdate();
-});
-
-$("td a.remove").click(function() {
-    let index = $(this).attr('data');
-    let dataRemove = dados.data[index];
-    alert(dados.data.slice(index, 1));
-    tableUpdate();
-    charUpdate();
-});
-
-$("td a.edit").click(function() {
-    let index = $(this).attr('data');
-    let dataEdit = dados.data[index];
-});
 
 function sortDesc(){
     dados.data.sort(function(a,b){
@@ -113,9 +91,9 @@ function tableUpdate() {
     $.each(dados.data, function( index, value ) {
         t.row.add([
             value.t, value.d, 
-            "<a href='#' class='edit' data='"+index+"'><i class='fa fa-pencil-square-o'></i></a>", 
-            "<a href='#' class='remove' data='"+index+"'><i class='fa fa-trash-o danger'></i></a>"
-        ]).draw(true);
+            "<a href='#' class='edit' title='"+index+"' data='"+index+"'><i class='fa fa-pencil-square-o'></i></a>", 
+            "<a href='#' class='remove' title='"+index+"' data='"+index+"'><i class='fa fa-trash-o danger'></i></a>"
+        ]).draw(false);
     });
 }
 
@@ -134,3 +112,86 @@ function charUpdate() {
         ]
     });
 }
+
+$("#rowInsert").click(function() {
+    let name = $("#nameInsert").val();
+    let ok = true;
+    $.each(dados.data, function( index, value ) {
+        if(value.t == name){
+            ok = false;
+        }
+    });
+
+    if (ok) {
+        let value = parseInt($("#valueInsert").val());
+        let pos = dados.data.push({t: name, d: value});
+        sortDesc();
+        tableUpdate();
+        charUpdate();
+    } else {
+        alert(name + " já existe no gráfico, tente um nome diferente!");
+    } 
+});
+
+
+$(document).on('click', '#tableDados td a.remove', function(e) {
+    let index = $(this).attr('data');
+    let dataRemove = dados.data[index];
+    if(confirm("Deseja mesmo remover " + dataRemove.t + ":" + dataRemove.d + " ?")){
+        let remove = dados.data.splice(index, 1);
+        tableUpdate();
+        charUpdate();
+        $("#alerts").html(
+            '<div class="alert alert-info alert-dismissible fade show shadow2" role="alert">'
+            +'<strong>'+ dataRemove.t  +', removido com sucesso!</strong> '
+            +'<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
+            +'<span aria-hidden="true">&times;</span>'
+            +'</button>'
+            +'</div>'
+        );
+    }
+    e.preventDefault();
+});
+
+$("#rowUpdate").click(function() {
+    let name = $("#nameUpdate").val();
+    let value = $("#valueUpdate").val();
+    let index = $("#idUpdate").val();
+    dados.data[index] = {t: name, d: value};
+    tableUpdate();
+    charUpdate();
+    $("#alerts").html(
+        '<div class="alert alert-info alert-dismissible fade show shadow2" role="alert">'
+        +'<strong>'+ name  +':' + value + ', atualizado com sucesso!</strong> '
+        +'<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
+        +'<span aria-hidden="true">&times;</span>'
+        +'</button>'
+        +'</div>'
+    );
+});
+
+$("#rowUpdateCancel").click(function() {
+    $("#formInsert").show("fast");
+    $("#formUpdate").hide("fast");
+    $("#nameUpdate").val("");
+    $("#valueUpdate").val("");
+    $("#idUpdate").val("");
+});
+
+$(document).on('click', '#tableDados td a.edit', function(e) {
+    let index = $(this).attr('data');
+    let dataEdit = dados.data[index];
+    if(dataEdit) {
+        $("#formInsert").hide("fast");
+        $("#formUpdate").show("fast");
+        $("#nameUpdate").val(dataEdit.t);
+        $("#valueUpdate").val(dataEdit.d);
+        $("#idUpdate").val(index);
+    }
+    e.preventDefault();
+});
+
+
+$(window).bind('beforeunload', function(){
+    return "teste";
+});

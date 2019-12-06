@@ -1,0 +1,23 @@
+{
+    "title": "Motivos de cancelamento/devolução de pedidos em Nov/19",
+    "xAxisTitleLeft": "Frequência em quantidade",
+    "xAxisTitleRight": "Frequência Acumulada em %",
+    "seriesPercentName": "% Acumudado",
+    "seriesValName": "Casos Identificados",
+    "data" : [
+        {"n":"Sepração errada", "v":45},
+        {"n":"Faturamento Inconrreto", "v":60},
+        {"n":"Atraso na transportadora", "v":125},
+        {"n":"Pedido Errado", "v":30},
+        {"n":"Atraso na Entrega", "v":140},
+        {"n":"Não Gostou", "v":17},
+        {"n":"Danificado durante a entrega", "v":10},
+        {"n":"Cliente pediu errado", "v":18},
+        {"n":"Preço errado", "v":20},
+        {"n":"Produto com defeito", "v":65},
+        {"n":"Outros", "v":8}
+    ],
+    "classeA": 0,
+    "classeB": 0,
+    "classeC": 0
+}
