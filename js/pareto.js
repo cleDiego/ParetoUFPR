@@ -15,21 +15,21 @@ $(".ziehharmonika").ziehharmonika({
         
 
 var dados = {
-    title: 'Motivos de cancelamento/devolução de pedidos em Nov/19',
-    xAxisTitleLeft: 'Frequência em quantidade',
-    xAxisTitleRight: 'Frequência Acumulada em %',
+    title: 'Motivos de cancelamento/devoluÃ§Ã£o de pedidos em Nov/19',
+    xAxisTitleLeft: 'FrequÃªncia em quantidade',
+    xAxisTitleRight: 'FrequÃªncia Acumulada em %',
     seriesPercentName: '% Acumudado',
     seriesValName: 'Casos Identificados',
     data : [
-        {t:'Sepração errada', d:45},
+        {t:'SepraÃ§Ã£o errada', d:45},
         {t:'Faturamento Inconrreto', d:60},
         {t:'Atraso na transportadora', d:125},
         {t:'Pedido Errado', d:30},
         {t:'Atraso na Entrega', d:140},
-        {t:'Não Gostou', d:17},
+        {t:'NÃ£o Gostou', d:17},
         {t:'Danificado durante a entrega', d:10},
         {t:'Cliente pediu errado', d:18},
-        {t:'Preço errado', d:20},
+        {t:'PreÃ§o errado', d:20},
         {t:'Produto com defeito', d:65},
         {t:'Outros', d:8},
     ],
@@ -56,13 +56,18 @@ $.each(dados.data, function( index, value ) {
 var chart = Highcharts.chart('graph', {
     chart: { renderTo: 'graph',   type: 'column' },
     title: { text: dados.title },
-    tooltip: { shared: true },
+    tooltip: {
+        shared: true,
+        useHTML: true,
+        headerFormat: '<b style="margin-bottom: 10px; border-bottom: 1px solid #ccc;">{point.key}</b><table>',
+        footerFormat: '</table>'
+    },
     xAxis: {
         categories: categories,
         crosshair: true,
         plotLines: [
-            { color: '#FF0000', width: 2,  zIndex: 3,  value: dados.classeA },
-            { color: '#e94d0a', width: 1,  zIndex: 3,  value: dados.classeB }
+            { color: '#FF0000', width: 2,  zIndex: 4,  value: dados.classeA },
+            { color: '#e94d0a', width: 1,  zIndex: 4,  value: dados.classeB }
         ]
     },
     yAxis: [
@@ -71,10 +76,30 @@ var chart = Highcharts.chart('graph', {
             minPadding: 0,  maxPadding: 0,  max: 100,  min: 0,  opposite: true,  labels: {  format: "{value}%" }
         }
     ],
+    plotOptions: {
+        series: {
+            shadow: true
+        }
+    },
     series: [
-        { type: 'pareto',  name: dados.seriesPercentName,  yAxis: 1,  zIndex: 10,  baseSeries: 1,  labels: {  format: "{value}%" }}, 
-        { name: dados.seriesValName, type: 'column', zIndex: 2,  data: values  }]
+        { type: 'pareto',  name: dados.seriesPercentName,  yAxis: 1,  zIndex: 3,  baseSeries: 1,
+            lineWidth: 3,
+            color: '#7b5baf',
+            labels: {  format: "{value:.2f}%" },
+            tooltip: { pointFormat: '<tr><td>{series.name}: </td>' +
+                '<td style="text-align: right"><b>{point.y:.2f}%</b></td></tr>'}
+        }, 
+        { name: dados.seriesValName, type: 'column', zIndex: 2,  data: values,
+            opacity: 0.9,
+            color: '#75AC8A',
+            labels: { format: "{value}" },
+            tooltip: { pointFormat: '<tr><td>{series.name}: </td>' +
+                '<td style="text-align: right"><b>{point.y}</b></td></tr>'}
+        }
+    ]
 });
+
+charUpdate();
 
 
 
@@ -97,7 +122,18 @@ function tableUpdate() {
     });
 }
 
+
+
 function charUpdate() {
+    $({deg: 0}).animate({deg: 360}, {
+        duration: 1000,
+        step: function(now) {
+            $(".refresh-graph i").css({
+                transform: 'rotate(' + now + 'deg)'
+            });
+        }
+    });
+
     categories = []; values = [];
     $.each(dados.data, function( index, value ) {
         categories.push(value.t);
@@ -107,7 +143,7 @@ function charUpdate() {
     chart.update({
         xAxis: { categories: categories },
         series: [
-            { yAxis: 1, zIndex: 10, baseSeries: 1 }, 
+            { yAxis: 1 }, 
             { data: values }
         ]
     });
@@ -130,19 +166,20 @@ $("#formInsert").submit(function(e) {
         charUpdate();
         alerts('success', name + ' adicionado com sucesso!', 2);
     } else {
-        alerts('danger', name + ' já existe no gráfico, tente um nome diferente!', 2);
+        alerts('danger', name + ' jÃ¡ existe, tente um nome diferente!', 2);
     }
     e.preventDefault();
 });
 
 $("#formUpdate").submit(function(e) {
     let name = $("#nameUpdate").val();
-    let value = $("#valueUpdate").val();
-    let index = $("#idUpdate").val();
+    let value = parseInt($("#valueUpdate").val());
+    let index = $("#idUpdate").html();
     dados.data[index] = {t: name, d: value};
     tableUpdate();
     charUpdate();
     alerts('success', name  +':' + value + ', atualizado com sucesso!', 2);
+    $("#rowUpdateCancel").trigger("click");
     e.preventDefault();
 });
 
@@ -178,7 +215,7 @@ $("#rowUpdateCancel").click(function() {
     $("#formUpdate").hide("fast");
     $("#nameUpdate").val("");
     $("#valueUpdate").val("");
-    $("#idUpdate").val("");
+    $("#idUpdate").html("");
 });
 
 $(document).on('click', '#tableDados td a.edit', function(e) {
@@ -189,7 +226,7 @@ $(document).on('click', '#tableDados td a.edit', function(e) {
         $("#formUpdate").show("fast");
         $("#nameUpdate").val(dataEdit.t);
         $("#valueUpdate").val(dataEdit.d);
-        $("#idUpdate").val(index);
+        $("#idUpdate").html(index);
     }
     e.preventDefault();
 });
@@ -210,5 +247,5 @@ function alerts(type, msg, time) {
     );
     setTimeout(function() {
         $(".alert").alert('close');
-    }, time);
+    }, time*1000);
 }

@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html">
-    <meta charset="iso-88951" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Pareto - Ferramentas da Qualidade</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
@@ -24,73 +24,90 @@
     <h2 class="title_page">Teste</h2>
     <div class="content">
         <div class="ziehharmonika">
-            <!--## CONFIGURAÇÔES BASICAS ##-->
-            <h3><i class='fa fa-cogs p-r-10'></i> Configurações Básicas</h3>
+            <!--## CONFIGURA??ES BASICAS ##-->
+            <h3><i class='fa fa-cogs p-r-10'></i> ConfiguraÃ§Ãµes BÃ¡sicas</h3>
             <div>
+                <form autocomplete="off" id="formBasic" class="row m-b-50">
+
+                    <div class="row" class="p-t-40 p-b-40">
+                    
+                        <div class="col-5 p-t-40">
+                            <input id="graphicName" type="text" required placeholder="Nome do GrÃ¡fico" />
+                        </div>
+                        
+                    </div>
+
+                </form>
 
             </div>
 
-            <!--## CONFIGURAÇÔES AVANCADAS ##-->
+            <!--## CONFIGURA??ES AVANCADAS ##-->
             <h3><i class='fa fa-table p-r-10'></i>  Dados</h3>
             <div>
                 
-                <div class="col-12 m-t-20 m-b-40">
-                    <form id="formInsert" class="row">
-                        <div class="col-12">
-                            <h5>Inserir dados:</h5>
-                        </div>
-                        <div class="col-5">
-                            <input id="nameInsert" type="text" class="form-control" required placeholder="Nome">
-                        </div>
-                        <div class="col-2">
-                            <input id="valueInsert" type="number" class="form-control" required placeholder="Valor">
-                        </div>
-                        <div class="col-3">
-                            <button type="submit" class="btn btn-md btn-outline-primary"><i class="fa fa-check"></i> INSERIR</button>
-                        </div>
-                    </form>
+                <div class="row" class="p-t-40 p-b-40">
 
-                    <form id="formUpdate" class="row" style="display: none;">
-                        <div class="col-12">
-                            <h5>Atualizar dados:</h5>
-                        </div>
-                        <div class="col-1">
-                            <input id="idUpdate" type="number" class="form-control" required disabled>
-                        </div>
-                        <div class="col-5">
-                            <input id="nameUpdate" type="text" class="form-control" required placeholder="Nome">
-                        </div>
-                        <div class="col-2">
-                            <input id="valueUpdate" type="number" class="form-control" required placeholder="Valor">
-                        </div>
-                        <div class="col-4">
-                            <button type="submit" id="rowUpdate" class="btn btn-md btn-outline-primary shadow2"><i class="fa fa-check"></i> SALVAR</button>
-                            <button type="button" id="rowUpdateCancel" class="btn btn-md btn-outline-secondary shadow2"><i class="fa fa-ban"></i> CANCELAR</button>
-                        </div>
-                    </form>
-                    
+                    <div class="col-5 p-t-40">
+
+                        <form autocomplete="off" id="formInsert" class="row m-b-50">
+                            <div class="col-12">
+                                <h4>Inserir dados:</h4>
+                            </div>
+                            <div class="col-9">
+                                <input id="nameInsert" type="text" required placeholder="Nome">
+                            </div>
+                            <div class="col-3">
+                                <input id="valueInsert" type="number"  required placeholder="Valor">
+                            </div>
+                            <div class="col-4 m-t-10">
+                                <button type="submit" class="btn btn-md btn-outline-primary shadow2"><i class="fa fa-plus"></i> INSERIR</button>
+                            </div>
+                        </form>
+    
+                        <form autocomplete="off" id="formUpdate" class="row" style="display: none;">
+                            <div class="col-12">
+                                <h4>Atualizar dados: <span id="idUpdate"></span></h4>
+                            </div>
+                            <div class="col-9">
+                                <input id="nameUpdate" type="text" required placeholder="Nome">
+                            </div>
+                            <div class="col-3">
+                                <input id="valueUpdate" type="number" required placeholder="Valor">
+                            </div>
+                            <div class="col-10 m-t-10">
+                                <button type="submit" id="rowUpdate" class="btn btn-md btn-outline-primary shadow2"><i class="fa fa-check"></i> SALVAR</button>
+                                <button type="button" id="rowUpdateCancel" class="btn btn-md btn-outline-secondary shadow2"><i class="fa fa-ban"></i> CANCELAR</button>
+                            </div>
+                        </form>
+
+                    </div>
+    
+                    <div class="col-7">
+                        <table id="tableDados" class="table table-hover table-striped fs-18 display nowrap">
+                            <colgroup>
+                                <col span="1" style="width: 50%;">
+                                <col span="1" style="width: 20%;">
+                                <col span="1" style="width: 20%;">
+                                <col span="1" style="width: 20%;">
+                            </colgroup>
+        
+                            <thead>
+                                <th class="dt-left">Info</th>
+                                <th class="dt-center">Valor</th>
+                                <th class="dt-center">Editar</th>
+                                <th class="dt-center">Excluir</th>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+
                 </div>
-                <table id="tableDados" class="table table-hover table-striped fs-18 display nowrap">
-                    <colgroup>
-                        <col span="1" style="width: 50%;">
-                        <col span="1" style="width: 20%;">
-                        <col span="1" style="width: 20%;">
-                        <col span="1" style="width: 20%;">
-                    </colgroup>
-
-                    <thead>
-                        <th class="dt-left">Info</th>
-                        <th class="dt-center">Valor</th>
-                        <th class="dt-center">Editar</th>
-                        <th class="dt-center">Excluir</th>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
+                
             </div>
 
-            <!--## CONFIGURAÇÔES AVANCADAS ##-->
-            <h3><i class='fa fa-sliders p-r-10'></i> Configurações Avançadas</h3>
+            <!--## CONFIGURA??ES AVANCADAS ##-->
+            <h3><i class='fa fa-sliders p-r-10'></i> ConfiguraÃ§Ãµes AvanÃ§adas</h3>
             <div>
 
             </div>
@@ -98,12 +115,28 @@
             <!--## GRAFICO ##-->
             <h3><i class='fa fa-bar-chart p-r-10'></i> Pareto</h3>
             <div>
+                <div class="refresh-graph">
+                    <i class="fa fa-refresh" onclick="charUpdate()"></i>
+                </div>
                 <div id="graph"></div>
             </div>
 
         </div>
     </div>
-    <p>UFPR</p>
+    <div class="credits">
+        <p>Ferramenta Desenvolvido por:
+            <b><a title="linkedin" href="https://br.linkedin.com/in/cleverson-diego-1983038a/">
+                Cleverson Diego Vieira
+            </a></b>
+        </p>
+        <p>Orientado pelo Projessor:
+            <b><a title="linkedin" href="https://br.linkedin.com/in/arnaud-bonduelle-21214832">
+                Arnaud Francis Bonduelle
+            </a></b>
+        </p>
+        <p>UFPR</p>
+    </div>
+    
 
     <!-- SCRIPTS -->
     <script src="./js/jquery.js"></script>

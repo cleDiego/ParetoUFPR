@@ -1,10 +1,10 @@
 
 body {
-    font-family: Montserrat-Regular, sans-serif;
-    font-size: 16px;
+    font-family: 'Roboto', Montserrat-Regular, sans-serif !important;
+    font-size: 12px !important;
     margin: 0; padding: 20px;
     background: #f2f2f2;
-    color: #666;
+    color: #666 !important;
 }
 
 h2, h3, p{
@@ -25,12 +25,12 @@ a:hover {
 }
 
 input {
-    padding: 5px 5px 5px 7px; 
+    padding: 5px 5px 5px 15px; 
     background: #f2f2f2;
     border: 1px solid #ccc;
-    border-radius: 8px;
+    border-radius: 5px;
     outline: none;
-    font-size: 16px;
+	width: 100%;
 }
 
 input:hover, input:focus {
@@ -41,12 +41,11 @@ input:hover, input:focus {
 }
 
 button {
-    padding: 5px 25px 5px 25px; 
+    padding: 5px 25px 4px 25px !important; 
     color: #555;
     border: 1px solid #7b5baf;
     border-radius: 4px;
     outline: none;
-    font-size: 16px;
     cursor: pointer;
 	font-weight: bold;
 	outline: none !important;
@@ -54,7 +53,7 @@ button {
 }
 
 .content {
-    width: 1200px;
+    width: 1100px;
     margin: 0 auto 50px auto;
     height: auto;
     background: #fff;
@@ -65,18 +64,27 @@ button {
 
 #graph {
     width: 100%;
-    height: 500px;
+    height: 550px;
     margin: 40px auto;
 }
 
-.table {
-    font-size: 18px;
-	border-radius: 4px;
-	background: #BAD4CC;
+.refresh-graph {
+	width: 100%;
+}
+
+.refresh-graph  i {
+	font-size: 18px;
+	cursor: pointer;
+	float: right;
+}
+
+.table thead th {
+	font-size: 14px;
 }
 
 .table tbody tr td {
 	text-align: center;
+	font-size: 12px;
 }
 
 .table tbody tr td:first-child {
@@ -91,6 +99,14 @@ button {
 	top: 0;
 	z-index: 20;
 	text-align: center;
+}
+
+.credits {
+	margin-top: 40px;
+}
+.credits p, .credits p a {
+	margin: 5px;
+	font-size: 13px;
 }
 
 /*accordion

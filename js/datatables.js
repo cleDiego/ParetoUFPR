@@ -1,5 +1,5 @@
 /*! DataTables 1.10.18
- * ©2008-2018 SpryMedia Ltd - datatables.net/license
+ * Â©2008-2018 SpryMedia Ltd - datatables.net/license
  */
 
 /**
@@ -1353,10 +1353,10 @@
 	// - fr - Swiss Franc
 	// - kr - Swedish krona, Norwegian krone and Danish krone
 	// - \u2009 is thin space and \u202F is narrow no-break space, both used in many
-	// - Ƀ - Bitcoin
-	// - Ξ - Ethereum
+	// - É - Bitcoin
+	// - Î - Ethereum
 	//   standards as thousands separators.
-	var _re_formatted_numeric = /[',$£€¥%\u2009\u202F\u20BD\u20a9\u20BArfkɃΞ]/gi;
+	var _re_formatted_numeric = /[',$Â£â¬Â¥%\u2009\u202F\u20BD\u20a9\u20BArfkÉÎ]/gi;
 
 
 	var _empty = function ( d ) {
@@ -11262,21 +11262,21 @@
 		 */
 		"oLanguage": {
 			"sEmptyTable": "Nenhum registro encontrado",
-			"sInfo": "Mostrando de _START_ at� _END_ de _TOTAL_ registros",
-			"sInfoEmpty": "Mostrando 0 at� 0 de 0 registros",
+			"sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+			"sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
 			"sInfoFiltered": "(Filtrados de _MAX_ registros)",
 			"sInfoPostFix": "",
 			"sInfoThousands": ".",
-			"sLengthMenu": "_MENU_ resultados por p�gina",
+			"sLengthMenu": "_MENU_ resultados por página",
 			"sLoadingRecords": "Carregando...",
 			"sProcessing": "Processando...",
 			"sZeroRecords": "Nenhum registro encontrado",
 			"sSearch": "Pesquisar",
 			"oPaginate": {
-				"sNext": "Pr�ximo",
+				"sNext": "Próximo",
 				"sPrevious": "Anterior",
 				"sFirst": "Primeiro",
-				"sLast": "�ltimo"
+				"sLast": "Último"
 			},
 			"oAria": {
 				"sSortAscending": ": Ordenar colunas de forma ascendente",
