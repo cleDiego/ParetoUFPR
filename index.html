@@ -28,24 +28,28 @@
             <h3><i class='fa fa-cogs p-r-10'></i> Configurações Básicas</h3>
             <div>
                 <form autocomplete="off" id="formBasic" class="row m-b-50">
-
-                    <div class="row" class="p-t-40 p-b-40">
-                    
-                        <div class="col-5 p-t-40">
-                            <input id="graphicName" type="text" required placeholder="Nome do Gráfico" />
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Nome do Gráfico</label>
+                            <input id="graphName" type="text" required placeholder="Nome do Gráfico" />
                         </div>
-                        
                     </div>
-
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label>Nome do Gráfico</label>
+                                <input id="grapXname" type="text" required placeholder="Nome do Eixo X" />
+                            </div>
+                        </div>
+                    </div>     
                 </form>
-
             </div>
 
             <!--## CONFIGURA??ES AVANCADAS ##-->
             <h3><i class='fa fa-table p-r-10'></i>  Dados</h3>
             <div>
                 
-                <div class="row" class="p-t-40 p-b-40">
+                <div class="row p-t-40 p-b-40">
 
                     <div class="col-5 p-t-40">
 
@@ -59,7 +63,7 @@
                             <div class="col-3">
                                 <input id="valueInsert" type="number"  required placeholder="Valor">
                             </div>
-                            <div class="col-4 m-t-10">
+                            <div class="col-6 m-t-10">
                                 <button type="submit" class="btn btn-md btn-outline-primary shadow2"><i class="fa fa-plus"></i> INSERIR</button>
                             </div>
                         </form>
