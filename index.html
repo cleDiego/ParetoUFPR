@@ -21,27 +21,50 @@
 
 <body>
     <div class="alerts" id="alerts"></div>
-    <h2 class="title_page">Teste</h2>
+    <h2 class="title_page">Pareto</h2>
     <div class="content">
         <div class="ziehharmonika">
             <!--## CONFIGURA??ES BASICAS ##-->
             <h3><i class='fa fa-cogs p-r-10'></i> Configurações Básicas</h3>
             <div>
-                <form autocomplete="off" id="formBasic" class="row m-b-50">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Nome do Gráfico</label>
-                            <input id="graphName" type="text" required placeholder="Nome do Gráfico" />
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col">
-                            <div class="form-group">
-                                <label>Nome do Gráfico</label>
-                                <input id="grapXname" type="text" required placeholder="Nome do Eixo X" />
+                <form autocomplete="off" id="formBasic">
+                    <div class="row p-t-10">
+                        <div class="col-6">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label>Titulo do Gráfico:</label>
+                                    <input id="title" type="text" required placeholder="" value="Motivos de cancelamento/devolução de pedidos em Nov/19" />
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label><i class="fa fa-hand-o-left p-r-5"></i>Titulo do Eixo Esquerdo:</label>
+                                    <input id="xAxisTitleLeft" type="text" required placeholder="" value="Frequência em quantidade" />
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label><i class="fa fa-hand-o-right p-r-5"></i>Titulo do Eixo Direito:</label>
+                                    <input id="xAxisTitleRight" type="text" required placeholder="" value="Frequência Acumulada em %" />
+                                </div>
                             </div>
                         </div>
-                    </div>     
+                        
+                        <div class="col-6">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label>Nome da Série de Dados (Colunas):</label>
+                                    <input id="seriesValName" type="text" required placeholder="" value="Casos Identificados" />
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label>Nome da Serie de Dados Perncentual (Linha):</label>
+                                    <input id="seriesPercentName" type="text" required placeholder="" value="% Acumudado" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </form>
             </div>
 
@@ -147,6 +170,7 @@
     <script src="./bootstrap431/js/bootstrap.js"></script>
     <script src="./charts/code/highcharts.js"></script>
     <script src="./charts/code/modules/pareto.js"></script>
+    <script src="./charts/code/modules/exporting.js"></script>
     <script src="./js/acordion.js"></script>
     <script src="./js/mask.js"></script>
     <script src="./js/btnswitch.js"></script>

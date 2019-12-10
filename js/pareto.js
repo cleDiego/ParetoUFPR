@@ -102,52 +102,12 @@ var chart = Highcharts.chart('graph', {
 charUpdate();
 
 
-
-function sortDesc(){
-    dados.data.sort(function(a,b){
-        if(a.d < b.d) return 1
-        if(a.d > b.d) return -1
-        return 0;
-    });
-}
-
-function tableUpdate() {
-    t.clear();
-    $.each(dados.data, function( index, value ) {
-        t.row.add([
-            value.t, value.d, 
-            "<a href='#' class='edit' title='"+index+"' data='"+index+"'><i class='fa fa-pencil-square-o'></i></a>", 
-            "<a href='#' class='remove' title='"+index+"' data='"+index+"'><i class='fa fa-trash-o danger'></i></a>"
-        ]).draw(false);
-    });
-}
-
-
-
-function charUpdate() {
-    $({deg: 0}).animate({deg: 360}, {
-        duration: 1000,
-        step: function(now) {
-            $(".refresh-graph i").css({
-                transform: 'rotate(' + now + 'deg)'
-            });
-        }
-    });
-
-    categories = []; values = [];
-    $.each(dados.data, function( index, value ) {
-        categories.push(value.t);
-        values.push(value.d);
-    });
-
-    chart.update({
-        xAxis: { categories: categories },
-        series: [
-            { yAxis: 1 }, 
-            { data: values }
-        ]
-    });
-}
+$("#formBasic input").change(function (e) {
+    let elem = $(this).attr("id");
+    dados[elem] = $(this).val();
+    charUpdate();
+    alerts('success', elem + ' atualizado!', 2);
+});
 
 $("#formInsert").submit(function(e) {
     let name = $("#nameInsert").val();
@@ -176,6 +136,7 @@ $("#formUpdate").submit(function(e) {
     let value = parseInt($("#valueUpdate").val());
     let index = $("#idUpdate").html();
     dados.data[index] = {t: name, d: value};
+    sortDesc();
     tableUpdate();
     charUpdate();
     alerts('success', name  +':' + value + ', atualizado com sucesso!', 2);
@@ -231,9 +192,33 @@ $(document).on('click', '#tableDados td a.edit', function(e) {
     e.preventDefault();
 });
 
-
+/* Exibir alerta ao atualizar
 $(window).bind('beforeunload', function(){
     return "teste";
+});*/
+$(window).keydown(function(e) {
+    return true;
+    if(e.which == 116){
+        e.preventDefault();
+        e.stopPropagation();
+        swal({
+            title: "Tem certeza ?",
+            text: "Deseja mesmo atualizar a página ? \nSeus dados serão perdidos!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((res) => {
+            if (res) {
+                location.reload();
+                return true;
+            } else {
+                return false;
+            }
+        });
+        
+    }
+    
 });
 
 function alerts(type, msg, time) {
@@ -248,4 +233,56 @@ function alerts(type, msg, time) {
     setTimeout(function() {
         $(".alert").alert('close');
     }, time*1000);
+}
+
+
+function sortDesc(){
+    dados.data.sort(function(a,b){
+        if(a.d < b.d) return 1
+        if(a.d > b.d) return -1
+        return 0;
+    });
+}
+
+function tableUpdate() {
+    t.clear();
+    $.each(dados.data, function( index, value ) {
+        t.row.add([
+            value.t, value.d, 
+            "<a href='#' class='edit' title='"+index+"' data='"+index+"'><i class='fa fa-pencil-square-o'></i></a>", 
+            "<a href='#' class='remove' title='"+index+"' data='"+index+"'><i class='fa fa-trash-o danger'></i></a>"
+        ]).draw(false);
+    });
+}
+
+
+
+function charUpdate() {
+    $({deg: 0}).animate({deg: 360}, {
+        duration: 1000,
+        step: function(now) {
+            $(".refresh-graph i").css({
+                transform: 'rotate(' + now + 'deg)'
+            });
+        }
+    });
+
+    categories = []; values = [];
+    $.each(dados.data, function( index, value ) {
+        categories.push(value.t);
+        values.push(value.d);
+    });
+
+    chart.update({
+        title: { text: dados.title },
+        xAxis: { categories: categories },
+        yAxis: [
+            { title: {  text: dados.xAxisTitleLeft }}, //eixo esquerdo
+            { title: {  text: dados.xAxisTitleRight }}
+        ],
+        series: [
+            { name: dados.seriesPercentName, yAxis: 1 }, 
+            { name: dados.seriesValName, data: values }
+        ]
+    });
 }
