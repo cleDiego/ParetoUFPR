@@ -12,7 +12,15 @@ $(".ziehharmonika").ziehharmonika({
 });
 //$('.ziehharmonika h3:eq(3)').ziehharmonika('open');
 //$('.ziehharmonika h3:eq(0)').ziehharmonika('open');
-        
+$('input[type="range"]').rangeslider({
+    polyfill : false,
+    onInit : function() {
+        this.output = $( '<div class="range-output" />' ).insertAfter( this.$range ).html( this.$element.val() + "px" );
+    },
+    onSlide : function( position, value ) {
+        this.output.html( value + "px" );
+    }
+});     
 
 var dados = {
     title: 'Motivos de cancelamento/devolução de pedidos em Nov/19',
@@ -22,6 +30,8 @@ var dados = {
     seriesValName: 'Casos Identificados',
     colorCol: '#75AC8A',
     colorLine: '#7b5baf',
+    lineWidth: 1.5,
+    columnPadding: 0.1,
     data : [
         {t:'Sepração errada', d:45},
         {t:'Faturamento Inconrreto', d:60},
@@ -85,7 +95,7 @@ var chart = Highcharts.chart('graph', {
     },
     series: [
         { type: 'pareto',  name: dados.seriesPercentName,  yAxis: 1,  zIndex: 3,  baseSeries: 1,
-            lineWidth: 3,
+            lineWidth: dados.lineWidth,
             color: '#7b5baf',
             labels: {  format: "{value:.2f}%" },
             tooltip: { pointFormat: '<tr><td>{series.name}: </td>' +
@@ -93,6 +103,7 @@ var chart = Highcharts.chart('graph', {
         }, 
         { name: dados.seriesValName, type: 'column', zIndex: 2,  data: values,
             opacity: 0.9,
+            pointPadding: dados.columnPadding,
             color: '#75AC8A',
             labels: { format: "{value}" },
             tooltip: { pointFormat: '<tr><td>{series.name}: </td>' +
@@ -290,8 +301,8 @@ function charUpdate() {
             { title: {  text: dados.xAxisTitleRight }}
         ],
         series: [
-            { name: dados.seriesPercentName, yAxis: 1, color: dados.colorLine }, 
-            { name: dados.seriesValName, data: values, color: dados.colorCol }
+            { name: dados.seriesPercentName, yAxis: 1, color: dados.colorLine, lineWidth: dados.lineWidth }, 
+            { name: dados.seriesValName, data: values, color: dados.colorCol, pointPadding: dados.columnPadding, }
         ]
     });
 }

@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" type="text/css" href="./bootstrap431/css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="./css/spectrum.css" />
+    <link rel="stylesheet" type="text/css" href="./css/rangeslider.css" />
     <link rel="stylesheet" type="text/css" href="./css/datatables.css" />
     <link rel="stylesheet" type="text/css" href="./css/btnswitch.css" />
     <link rel="stylesheet" type="text/css" href="./css/util.css" />
@@ -177,9 +178,13 @@
                             </div>
 
                         </div>
-
-                        <div class="col-6">
-
+                        <div class="col-1"></div>
+                        <div class="col-3">
+                            <h5>Tamanhos</h5>
+                            <div class="form-group">
+                                <label>Espessura da Linha:</label>
+                                <input type="range" id="lineWidth" value="2" min="0.5" step="0.5" max="10" >
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -218,6 +223,7 @@
     <script src="./charts/code/modules/pareto.js"></script>
     <script src="./charts/code/modules/exporting.js"></script>
     <script src="./js/acordion.js"></script>
+    <script src="./js/rangeslider.js"></script>
     <script src="./js/mask.js"></script>
     <script src="./js/btnswitch.js"></script>
     <script src="./js/spectrum.js"></script>

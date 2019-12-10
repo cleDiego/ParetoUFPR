@@ -24,7 +24,7 @@ a:hover {
 	margin-bottom: 40px;
 }
 
-input {
+input[type="text"], input[type="number"] {
     padding: 5px 5px 5px 15px; 
     background: #f2f2f2;
     border: 1px solid #ccc;
@@ -37,6 +37,7 @@ input[type="color"] {
 	background: none;
 	border-radius: 0;
 	cursor: pointer;
+	width: 100%;
 }
 
 input:hover, input:focus {
