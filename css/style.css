@@ -32,6 +32,12 @@ input {
     outline: none;
 	width: 100%;
 }
+input[type="color"] {
+	padding: 0;
+	background: none;
+	border-radius: 0;
+	cursor: pointer;
+}
 
 input:hover, input:focus {
 	border-color: #a593c3 !important;

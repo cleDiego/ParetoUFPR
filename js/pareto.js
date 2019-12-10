@@ -20,6 +20,8 @@ var dados = {
     xAxisTitleRight: 'Frequência Acumulada em %',
     seriesPercentName: '% Acumudado',
     seriesValName: 'Casos Identificados',
+    colorCol: '#75AC8A',
+    colorLine: '#7b5baf',
     data : [
         {t:'Sepração errada', d:45},
         {t:'Faturamento Inconrreto', d:60},
@@ -103,6 +105,13 @@ charUpdate();
 
 
 $("#formBasic input").change(function (e) {
+    let elem = $(this).attr("id");
+    dados[elem] = $(this).val();
+    charUpdate();
+    alerts('success', elem + ' atualizado!', 2);
+});
+
+$("#formAdvanced input").change(function (e) {
     let elem = $(this).attr("id");
     dados[elem] = $(this).val();
     charUpdate();
@@ -281,8 +290,8 @@ function charUpdate() {
             { title: {  text: dados.xAxisTitleRight }}
         ],
         series: [
-            { name: dados.seriesPercentName, yAxis: 1 }, 
-            { name: dados.seriesValName, data: values }
+            { name: dados.seriesPercentName, yAxis: 1, color: dados.colorLine }, 
+            { name: dados.seriesValName, data: values, color: dados.colorCol }
         ]
     });
 }
