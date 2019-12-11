@@ -37,6 +37,7 @@ var dados = {
     minRightAxys: 0,
     maxRightAxys: 100,
     lineMarkerRadius: 5,
+    abcEnabled: true,
     data : [
         {t:'Sepração errada', d:45},
         {t:'Faturamento Inconrreto', d:60},
@@ -82,10 +83,7 @@ var chart = Highcharts.chart('graph', {
     xAxis: {
         categories: categories,
         crosshair: true,
-        plotLines: [
-            { color: '#FF0000', width: 2,  zIndex: 4,  value: dados.classeA },
-            { color: '#e94d0a', width: 1,  zIndex: 4,  value: dados.classeB }
-        ]
+        plotLines: abcUpdate()
     },
     yAxis: [
         { title: {  text: dados.xAxisTitleLeft },
@@ -294,6 +292,17 @@ function tableUpdate() {
     });
 }
 
+function abcUpdate() {
+    $abcEnabledRes = null;
+    if(dados.abcEnabled){
+        $abcEnabledRes = [
+            { color: '#FF0000', width: 2,  zIndex: 4,  value: dados.classeA },
+            { color: '#e94d0a', width: 1,  zIndex: 4,  value: dados.classeB }
+        ];
+    }
+    return $abcEnabledRes;
+}
+
 
 
 function charUpdate() {
@@ -314,7 +323,7 @@ function charUpdate() {
 
     chart.update({
         title: { text: dados.title },
-        xAxis: { categories: categories },
+        xAxis: { categories: categories, plotLines: abcUpdate() },
         yAxis: [
             { title: {  text: dados.xAxisTitleLeft },
                 max: dados.maxLeftAxys,  min: dados.minLeftAxys,
