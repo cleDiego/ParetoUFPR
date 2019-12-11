@@ -24,7 +24,7 @@ a:hover {
 	margin-bottom: 40px;
 }
 
-input[type="text"], input[type="number"] {
+input[type="text"], input[type="number"], input[type="search"] {
     padding: 5px 5px 5px 15px; 
     background: #f2f2f2;
     border: 1px solid #ccc;
@@ -38,6 +38,10 @@ input[type="color"] {
 	border-radius: 0;
 	cursor: pointer;
 	width: 100%;
+}
+
+input[type="search"] {
+	width: auto;
 }
 
 input:hover, input:focus {

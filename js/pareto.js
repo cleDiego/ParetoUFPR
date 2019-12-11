@@ -30,8 +30,13 @@ var dados = {
     seriesValName: 'Casos Identificados',
     colorCol: '#75AC8A',
     colorLine: '#7b5baf',
-    lineWidth: 1.5,
-    columnPadding: 0.1,
+    lineWidth: 3,
+    columnPadding: 0,
+    minLeftAxys: 0,
+    maxLeftAxys: null,
+    minRightAxys: 0,
+    maxRightAxys: 100,
+    lineMarkerRadius: 5,
     data : [
         {t:'Sepração errada', d:45},
         {t:'Faturamento Inconrreto', d:60},
@@ -83,20 +88,34 @@ var chart = Highcharts.chart('graph', {
         ]
     },
     yAxis: [
-        { title: {  text: dados.xAxisTitleLeft }}, //eixo esquerdo
+        { title: {  text: dados.xAxisTitleLeft },
+            max: dados.maxLeftAxys,  min: dados.minLeftAxys
+        }, //eixo esquerdo
         { title: {  text: dados.xAxisTitleRight }, //eixo direito
-            minPadding: 0,  maxPadding: 0,  max: 100,  min: 0,  opposite: true,  labels: {  format: "{value}%" }
+            minPadding: 0,  maxPadding: 0,  max: dados.maxRightAxys,  min: dados.minRightAxys,  opposite: true,  labels: {  format: "{value}%" }
         }
     ],
     plotOptions: {
         series: {
-            shadow: true
+            shadow: true,
+            states: {
+                hover: {
+                    enabled: false,
+                }
+            }
         }
     },
     series: [
         { type: 'pareto',  name: dados.seriesPercentName,  yAxis: 1,  zIndex: 3,  baseSeries: 1,
             lineWidth: dados.lineWidth,
             color: '#7b5baf',
+            marker: {
+                symbol: 'circle',
+                fillColor: '#FFFFFF',
+                lineColor: null,
+                lineWidth: 3,
+                radius: dados.lineMarkerRadius
+            },
             labels: {  format: "{value:.2f}%" },
             tooltip: { pointFormat: '<tr><td>{series.name}: </td>' +
                 '<td style="text-align: right"><b>{point.y:.2f}%</b></td></tr>'}
@@ -297,11 +316,24 @@ function charUpdate() {
         title: { text: dados.title },
         xAxis: { categories: categories },
         yAxis: [
-            { title: {  text: dados.xAxisTitleLeft }}, //eixo esquerdo
-            { title: {  text: dados.xAxisTitleRight }}
+            { title: {  text: dados.xAxisTitleLeft },
+                max: dados.maxLeftAxys,  min: dados.minLeftAxys,
+            }, //eixo esquerdo
+            { title: {  text: dados.xAxisTitleRight }, //eixo direito
+                max: dados.maxRightAxys,  min: dados.minRightAxys
+            }
         ],
+        plotOptions: {
+            series: {
+                shadow: true
+            }
+        },
         series: [
-            { name: dados.seriesPercentName, yAxis: 1, color: dados.colorLine, lineWidth: dados.lineWidth }, 
+            { name: dados.seriesPercentName, yAxis: 1, color: dados.colorLine, lineWidth: dados.lineWidth,
+                marker: {
+                    radius: dados.lineMarkerRadius
+                }
+            }, 
             { name: dados.seriesValName, data: values, color: dados.colorCol, pointPadding: dados.columnPadding, }
         ]
     });
