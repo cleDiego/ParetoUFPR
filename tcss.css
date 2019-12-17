@@ -21,17 +21,6 @@ input[type="text"], input[type="number"], input[type="search"] {
     outline: none;
 	width: 100%;
 }
-input[type="color"] {
-	padding: 0;
-	background: none;
-	border-radius: 0;
-	cursor: pointer;
-	width: 100%;
-}
-
-input[type="search"] {
-	width: auto;
-}
 
 input:hover, input:focus {
 	border-color: #a593c3 !important;
