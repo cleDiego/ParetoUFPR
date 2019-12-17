@@ -47,17 +47,17 @@ input[type="button"]:hover {
 }
 
 #display_SEARCH_AP, #display_KEY {
-    padding-left: 15px;
+    padding-left: 20px;
 }
 #status_SEARCH_AP {
     position: absolute;
-    margin-left: -168px;
-    margin-top: 2px;
+    margin-left: -175px;
+    margin-top: 2.5px;
 }
 #status_KEY {
     position: absolute;
-    margin-left: -122px;
-    margin-top: 2px;
+    margin-left: -140px;
+    margin-top: 2.5x;
 }
 #
 .row_acao .acao {
