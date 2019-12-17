@@ -1,3 +1,3 @@
-$(document).ready(function(e) {
-    $("th[colspan=12]").click(function(){alert('oi')});
+$(document).ready(function() {
+    $('input[type=checkbox]').iCheck();
 });
