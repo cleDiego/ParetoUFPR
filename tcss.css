@@ -11,7 +11,7 @@ th[colspan="12"]:hover{
     transition:0.4s
 }
 
-input:not([type="checkbox"], [type="radius"]), textarea, select {
+input:not([type="checkbox, radius"]), textarea, select {
     padding: 3px 0 3px 5px; 
     background: #f2f2f2;
     border: 1px solid #ccc;
@@ -30,8 +30,8 @@ select:hover, select:focus {
 
 input[type="button"] {
     padding: 4px 15px 4px 15px !important; 
-    color: #fff;
-    border: 1px solid #0054a6;
+    background: #fff;
+    color: #0054a6;
     border-radius: 4px;
     outline: none;
     cursor: pointer;
@@ -41,7 +41,7 @@ input[type="button"] {
     box-shadow: 0px 5px 5px -4px rgba(0,0,0,0.35);
 }
 input[type="button"]:hover {
-    background: #fff;
-    color: #0054a6;
+    color: #fff;
+    border: 1px solid #0054a6;
     transition: 0.4s;
 }
