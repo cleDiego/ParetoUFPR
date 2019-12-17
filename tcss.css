@@ -17,7 +17,6 @@ input, select {
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
-	width: 100%;
 }
 
 input:hover, input:focus {
