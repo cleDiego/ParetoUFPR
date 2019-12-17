@@ -46,7 +46,7 @@ input[type="button"]:hover {
     transition: 0.4s;
 }
 
-#display_SEARCH_AP {
+#display_SEARCH_AP, #display_KEY {
     padding-left: 15px;
 }
 #status_SEARCH_AP {
