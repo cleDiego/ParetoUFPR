@@ -46,6 +46,20 @@ input[type="button"]:hover {
     transition: 0.4s;
 }
 
+#display_SEARCH_AP {
+    padding-left: 15px;
+}
+#status_SEARCH_AP {
+    position: absolute;
+    margin-left: -158px;
+    margin-top: 2px;
+}
+#status_KEY {
+    position: absolute;
+    margin-left: -122px;
+    margin-top: 2px;
+}
+#
 .row_acao .acao {
     padding-top: 15px;
 }
