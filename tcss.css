@@ -5,9 +5,9 @@ th[colspan="12"]{
     transition:0.4s;
     text-align: center
 } 
-th[colspan="12"]:hover{
-    background:#0054a6;
-    color:#fff;
+th[colspan="12"]:hover {
+    background:#0054a6 !important;
+    color:#fff !important;
     transition:0.4s
 }
 
