@@ -11,7 +11,7 @@ th[colspan="12"]:hover{
     transition:0.4s
 }
 
-input, select {
+input[type="text"], select {
     padding: 5px; 
     background: #f2f2f2;
     border: 1px solid #ccc;
