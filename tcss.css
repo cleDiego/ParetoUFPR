@@ -48,3 +48,7 @@ input[type="button"]:hover {
     background: #0054a6;
     transition: 0.4s;
 }
+
+.row_acao {
+    margin-top: 15px;
+}
