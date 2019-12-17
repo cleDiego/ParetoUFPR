@@ -19,21 +19,20 @@ input[type="text"], select {
     outline: none;
 }
 
-input:hover, input:focus {
+input[type="text"]:hover, input[type="text"]:focus {
 	border-color: #a593c3 !important;
 	box-shadow: none;
 	background: #fff;
 	outline: none;
 }
 
-button {
+input[type="button"] {
     padding: 5px 25px 4px 25px !important; 
     color: #555;
-    border: 1px solid #7b5baf;
+    border: 1px solid #0054a6;
     border-radius: 4px;
     outline: none;
     cursor: pointer;
 	font-weight: bold;
 	outline: none !important;
-	border: none;
 }
