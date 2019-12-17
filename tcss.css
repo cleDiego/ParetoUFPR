@@ -27,6 +27,11 @@ select:hover, select:focus {
 	background: #fff;
 	outline: none;
 }
+input[type="checkbox, radius"] {
+    margin-bottom: 5px;
+    width: 15px;
+    height: 15px;
+}
 
 input[type="button"] {
     padding: 4px 15px 4px 15px !important; 
