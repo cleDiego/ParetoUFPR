@@ -29,12 +29,18 @@ select:hover, select:focus {
 }
 
 input[type="button"] {
-    padding: 5px 25px 4px 25px !important; 
-    color: #555;
+    padding: 4px 15px 4px 15px !important; 
+    color: #fff;
     border: 1px solid #0054a6;
     border-radius: 4px;
     outline: none;
     cursor: pointer;
 	font-weight: bold;
-	outline: none !important;
+    outline: none !important;
+    transition: 0.4s;
+}
+input[type="button"]:hover {
+    background: #fff;
+    color: #0054a6;
+    transition: 0.4s;
 }
