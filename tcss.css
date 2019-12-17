@@ -1,4 +1,4 @@
-@import "css/style.css";
+
 
 th[colspan="12"]{
     border-top:2px solid #0054a6;
@@ -11,4 +11,43 @@ th[colspan="12"]:hover{
     background:#0054a6;
     color:#fff;
     transition:0.4s
+}
+
+input[type="text"], input[type="number"], input[type="search"] {
+    padding: 5px 5px 5px 15px; 
+    background: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+	width: 100%;
+}
+input[type="color"] {
+	padding: 0;
+	background: none;
+	border-radius: 0;
+	cursor: pointer;
+	width: 100%;
+}
+
+input[type="search"] {
+	width: auto;
+}
+
+input:hover, input:focus {
+	border-color: #a593c3 !important;
+	box-shadow: none;
+	background: #fff;
+	outline: none;
+}
+
+button {
+    padding: 5px 25px 4px 25px !important; 
+    color: #555;
+    border: 1px solid #7b5baf;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+	font-weight: bold;
+	outline: none !important;
+	border: none;
 }
