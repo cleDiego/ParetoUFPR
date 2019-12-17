@@ -19,7 +19,7 @@ input:not([type="checkbox"], [type="radius"]), textarea, select {
     outline: none;
 }
 
-input:not([type="checkbox"], [type="radius"]):hover, input:not([type="checkbox"], [type="radius"]):focus, 
+input:not([type="checkbox, radius"]):hover, input:not([type="checkbox, radius"]):focus, 
 textarea:hover, textarea:focus,
 select:hover, select:focus {
 	border-color: #a593c3 !important;
