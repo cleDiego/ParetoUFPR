@@ -42,6 +42,6 @@ input[type="button"] {
 }
 input[type="button"]:hover {
     color: #fff;
-    border: 1px solid #0054a6;
+    background: #0054a6;
     transition: 0.4s;
 }
