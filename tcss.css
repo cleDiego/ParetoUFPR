@@ -27,10 +27,8 @@ select:hover, select:focus {
 	background: #fff;
 	outline: none;
 }
-input[type="checkbox, radius"] {
+.iradio_square-blue {
     margin-right: 5px;
-    width: 15px;
-    height: 15px;
 }
 
 input[type="button"] {
