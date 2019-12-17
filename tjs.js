@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $('input[type=checkbox], input[type=radio]').iCheck({
-        checkboxClass: 'icheckbox_flat',
-        radioClass: 'iradio_flat',
+        checkboxClass: 'icheckbox_square-blue',
+        radioClass: 'iradio_square-blue',
     });
 });
