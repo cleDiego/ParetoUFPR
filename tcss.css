@@ -28,7 +28,7 @@ select:hover, select:focus {
 	outline: none;
 }
 input[type="checkbox, radius"] {
-    margin-bottom: 5px;
+    margin-right: 5px;
     width: 15px;
     height: 15px;
 }
