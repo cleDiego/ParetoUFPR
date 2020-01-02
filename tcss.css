@@ -52,12 +52,12 @@ input[type="button"]:hover {
 #status_SEARCH_AP {
     position: absolute;
     margin-left: -175px;
-    margin-top: 2.5px;
+    margin-top: 2.3px;
 }
 #status_KEY {
     position: absolute;
     margin-left: -140px;
-    margin-top: 2.5px;
+    margin-top: 2.3px;
 }
 .row_acao .acao {
     padding-top: 15px;
