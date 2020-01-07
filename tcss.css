@@ -70,6 +70,6 @@ table tr th {
     font-size: 10px
 }
 .icon-envelope, .icon-flag, .icon-play, .icon-pause {
-    font-size: 16px;
+    font-size: 16px !important;
     vertical-align: middle;
 }
