@@ -62,3 +62,14 @@ input[type="button"]:hover {
 .row_acao .acao {
     padding-top: 15px;
 }
+table tr th {
+    padding: 5px 0 5px 0;
+    background-color: #a4caf3;
+}
+.edit {
+    font-size: 10px
+}
+.icon-envelope, .icon-flag, .icon-play, .icon-pause {
+    font-size: 16px;
+    vertical-align: middle;
+}
