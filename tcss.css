@@ -69,7 +69,7 @@ table tr th {
 .edit {
     font-size: 10px
 }
-.icon-envelope, .icon-flag, .icon-play, .icon-pause {
+.icon-envelope, .icon-flag, .icon-play, .icon-pause, .icon-clock-o {
     font-size: 16px !important;
     vertical-align: middle;
     cursor: pointer;
@@ -77,7 +77,7 @@ table tr th {
     opacity: 0.7;
     transition: 0.3s;
 }
-.icon-envelope:hover, .icon-flag:hover, .icon-play:hover, .icon-pause:hover {
+.icon-envelope:hover, .icon-flag:hover, .icon-play:hover, .icon-pause:hover, icon-clock-o:hover {
     opacity: 1;
     transition: 0.3s;
 }
