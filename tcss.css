@@ -61,7 +61,7 @@ input[type="button"]:hover {
 }
 #status_KEY {
     position: absolute;
-    margin-left: -138px;
+    margin-left: -140px;
     margin-top: 2.3px;
 }
 .row_acao .acao {
@@ -70,6 +70,7 @@ input[type="button"]:hover {
 table tr th {
     padding: 5px 0 5px 0;
     background-color: #a4caf3;
+    border-bottom: 1px solid #ccc;
 }
 .edit {
     font-size: 11px
