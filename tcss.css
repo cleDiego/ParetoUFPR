@@ -47,7 +47,7 @@ input[type="button"]:hover {
 }
 
 #display_SEARCH_AP, #display_KEY {
-    padding-left: 20px;
+    padding: 10px 3px 10px 20px;
 }
 #status_SEARCH_AP {
     position: absolute;
