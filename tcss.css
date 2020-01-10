@@ -51,17 +51,17 @@ input[type="button"]:hover {
     margin-top: -3px;
 }
 #display_KEY {
-    padding-left: 20px;
+    padding-left: 23px;
 }
 #status_SEARCH_AP {
     position: absolute;
-    margin-left: -173px;
+    margin-left: -180px;
     margin-top: 2.3px;
 
 }
 #status_KEY {
     position: absolute;
-    margin-left: -133px;
+    margin-left: -138px;
     margin-top: 2.3px;
 }
 .row_acao .acao {
