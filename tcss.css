@@ -87,3 +87,7 @@ table tr th {
     opacity: 1;
     transition: 0.3s;
 }
+img.ui-datepicker-trigger {
+    width: 24px;
+    margin: 0 5px -8px 5px;
+}
