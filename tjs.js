@@ -4,4 +4,5 @@ $(document).ready(function() {
         radioClass: 'iradio_square-blue',
         increaseArea: '1%'
     });
+    $('table').DataTable();
 });
