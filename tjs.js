@@ -24,29 +24,13 @@ $(document).ready(function() {
     }
 
     $("#searchProt").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-        $(".geral table:eq(2) tr").filter(function() {
-          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
-        /*var value = $(this).val();
-        // remove all highlighted text passing all em tags
-        removeHighlighting($("table tr em"));
         $(".geral table:eq(2) tr").each(function(index) {
-            if (index !== 0) {
-                $row = $(this);
-                var $tdElement = $row.find("td:first");
-                var id = $tdElement.text();
-                var matchedIndex = id.indexOf(value);
-
-                if (matchedIndex != 0) {
-                    $row.hide();
-                }
-                else {
-                    //highlight matching text, passing element and matched text
-                    addHighlighting($tdElement, value);
-                    $row.show();
-                }
+            if(index != 2) {
+                $(this).filter(function() {
+                  $(this).toggle($(this).text().toLowerCase().indexOf($("#searchProt").val()) > -1)
+                });
             }
-        });*/
+
+        });
     });
 });
