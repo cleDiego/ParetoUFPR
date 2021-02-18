@@ -4,5 +4,9 @@ $(document).ready(function() {
         radioClass: 'iradio_square-blue',
         increaseArea: '1%'
     });
-    $('table').DataTable();
+    $('.geral table:eq(3)').DataTable({
+        "paging":   false,
+        "order": [ 4, "asc" ],
+        "info":     false
+    });
 });
