@@ -6,40 +6,61 @@ $(document).ready(function() {
     });
     $(".geral table:eq(2)").before("<p style='text-align: right'><img src='imagens/lupa.gif' class='status' /> <input id='searchProt' type='text' /></p>");
     
-    // removes highlighting by replacing each em tag within the specified elements with it's content
-    function removeHighlighting(highlightedElements){
-        highlightedElements.each(function(){
-            var element = $(this);
-            element.replaceWith(element.html());
-        })
-    }
+    (function () {
+    
+        var removeHighlight = function () {
+            $('span.highlight').contents().unwrap();
+        };
 
-    // add highlighting by wrapping the matched text into an em tag, replacing the current elements, html value with it
-    function addHighlighting(element, textToHighlight){
-        var text = element.text();
-        var highlightedText = '<em>' + textToHighlight + '</em>';
-        var newText = text.replace(textToHighlight, highlightedText);
+        var wrapContent = function (index, $el, text) {
+            var $highlight = $('<span class="highlight"/>')
+                .text(text.substring(0, index));
+            //console.log(text.substring(0, index));
+            var normalText = document.createTextNode(text.substring(index, text.length));
+            //console.log(index, $highlight.text(), normalText);
+            $el.html($highlight).append(normalText);
+        };
 
-        element.html(newText);
-    }
+        var highlightTextInTable = function ($tableElements, searchText) {
+            // highlights if text found (during typing)
+            var matched = false;
+            //remove spans
+            removeHighlight();
 
-    $("#searchProt").on("keyup", function() {
-        var value = $("#searchProt").val().toLowerCase();
-        removeHighlighting($(".geral table:eq(2) tr em"));
-        
-        $(".geral table:eq(2) tr").each(function(index) {
-            if(index > 2) {
-                $(this).filter(function() {
-                    if($(this).text().toLowerCase().indexOf(value) > -1) {
-                        $(this).show();
-                        addHighlighting($(this).find('td:first'), value);
+            $.each($tableElements, function (index, item) {
+                var $el = $(item);
+                if ($el.text().search(searchText) != -1 && !matched) {
+                    //console.log("matched", $el, $el.html());
+                    wrapContent(searchText.length, $el, $el.html());
+                    //console.log(searchText, $el.text());
+                    if (searchText == $el.text()) {
+                        // found the entry
+                        //console.log("matched");
+                        matched = true;
                     }
-                    else {
-                        $(this).hide();
-                    }
-                });
-            }
+                }
+            });
+        };
 
+        $(function () {
+            //load table into object
+            var $tableRows = $('.geral table:eq(2) tr');
+            var $tableElements = $tableRows.children();
+
+            //console.log($tableRows, $tableElements);
+
+            $('#searchProt').on('keyup', function (e) {
+                var searchText = $(this).val();
+                if (searchText.length == 0) {
+                    // catches false triggers with empty input (e.g. backspace delete or case lock switch would trigger the function)
+                    removeHighlight(); // remove last remaining highlight
+                    return;
+                }
+
+                highlightTextInTable($tableElements, searchText);
+
+            });
         });
-    });
+
+    })();
 });
