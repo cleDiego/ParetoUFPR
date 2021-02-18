@@ -32,9 +32,10 @@ $(document).ready(function() {
                 var td = [];
                 $(this).find('td').each (function(etd) {
                     removeHighlighting(this);
-                    if($(this).text().toLowerCase().indexOf(value) > -1) {
+                    var pos = $(this).text().toLowerCase().indexOf(value);
+                    if(pos > -1) {
                         show = true;
-                        addHighlighting($(this), $(this).text());
+                        addHighlighting($(this), $(this).text().substring(pos, value.length));
                     }
                 });
                 
