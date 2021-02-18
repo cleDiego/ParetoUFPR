@@ -8,33 +8,39 @@ $(document).ready(function() {
     
     function addHighlighting(element, textToHighlight){
        var text = element.text();
-       var highlightedText = '<em>' + textToHighlight + '</em>';
+       var highlightedText = '<span class="highlight">' + textToHighlight + '</span>';
        var newText = text.replace(textToHighlight, highlightedText);
        element.html(newText);
     }
     
-    function removeHighlighting(highlightedElements){
-       highlightedElements.each(function(){
+    function removeHighlighting(highlightedElement){
+        /*highlightedElements.each(function(){
            var element = $(this);
            element.replaceWith(element.html());
-      })
+        })*/
     }
     
     $("#searchProt").on("keyup", function() {
+        $(".geral table:eq(2) tr > td span.highlight").each(function(){  
+            $(this).replaceWith($( this ).text());    
+        });
         var value = $("#searchProt").val().toLowerCase();
         
-        $(".geral table:eq(2) tr").each(function(index) {
-            if(index > 2) {
-                $(this).filter(function() {
+        $(".geral table:eq(2) tr").each(function(etr) {
+            if(etr > 2) {
+                var show = false;
+                var td = [];
+                $(this).find('td').each (function(etd) {
+                    removeHighlighting(this);
                     if($(this).text().toLowerCase().indexOf(value) > -1) {
-                        $(this).show();
-                    }
-                    else {
-                        $(this).hide();
+                        show = true;
+                        addHighlighting(this, value);
                     }
                 });
+                
+                if(show) $(this).show();
+                else $(this).hide();
             }
-
         });
     });
 
