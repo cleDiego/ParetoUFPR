@@ -7,9 +7,7 @@ $(document).ready(function() {
     $(".geral table:eq(2)").before("<p style='text-align: right'><img src='imagens/lupa.gif' class='status' /> <input id='searchProt' type='text' /></p>");
     
     function addHighlighting(element, textToHighlight){
-       var text = element.text();
-       var highlightedText = '<span class="highlight">' + textToHighlight + '</span>';
-       var newText = text.replace(textToHighlight, highlightedText);
+       var highlightedText = "<span class='highlight'>" + textToHighlight + "</span>";
        element.html(element.html().replace(textToHighlight, highlightedText));
     }
     
@@ -22,7 +20,7 @@ $(document).ready(function() {
     
     $("#searchProt").on("keyup", function() {
         $(".geral table:eq(2) tr > td span.highlight").each(function(){  
-            $(this).replaceWith($( this ).text());    
+            $(this).replaceWith($(this).text());    
         });
         var value = $("#searchProt").val().toLowerCase();
         
