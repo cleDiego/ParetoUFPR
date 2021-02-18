@@ -64,6 +64,15 @@ input[type="button"]:hover {
     margin-left: -140px;
     margin-top: 6px;
 }
+#searchTable img {
+	position: absolute;
+    margin-left: 5px;
+    margin-top: 6px;
+}
+#searchTable input {
+	padding-left: 23px;
+	margin-right: 3px
+}
 .row_acao .acao {
     padding-top: 15px;
 }
