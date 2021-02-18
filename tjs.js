@@ -4,7 +4,10 @@ $(document).ready(function() {
         radioClass: 'iradio_square-blue',
         increaseArea: '1%'
     });
-    $(".geral table:eq(2)").before("<p style='text-align: right' id='searchTable'><img src='imagens/lupa.gif' class='status' /> <input id='searchProt' type='text' /></p>");
+    
+    if($(".geral table:eq(2) tr:eq(2) th:eq(2)").text().replace(/\W/g, '') == "Protocolo") {
+        $(".geral table:eq(2)").before("<p style='text-align: right' id='searchTable'><img src='imagens/lupa.gif' class='status' /> <input id='searchProt' type='text' /></p>");
+    }
     
     function addHighlighting(element, textToHighlight){
        var highlightedText = "<span class='highlight'>" + textToHighlight + "</span>";
