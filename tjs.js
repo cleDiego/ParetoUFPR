@@ -24,10 +24,11 @@ $(document).ready(function() {
     }
 
     $("#searchProt").on("keyup", function() {
+        var value = $("#searchProt").val().toLowerCase();
         $(".geral table:eq(2) tr").each(function(index) {
             if(index != 2) {
                 $(this).filter(function() {
-                  $(this).toggle($(this).text().toLowerCase().indexOf($("#searchProt").val()) > -1)
+                  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
             }
 
