@@ -4,7 +4,7 @@ $(document).ready(function() {
         radioClass: 'iradio_square-blue',
         increaseArea: '1%'
     });
-    $(".geral table:eq(2)").prepend("<input id='searchProt' type='text' />");
+    $(".geral table:eq(2)").before("<p style='text-align: right'><img src='imagens/lupa.gif' class='status' /> <input id='searchProt' type='text' /></p>");
     
     // removes highlighting by replacing each em tag within the specified elements with it's content
     function removeHighlighting(highlightedElements){
