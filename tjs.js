@@ -24,7 +24,11 @@ $(document).ready(function() {
     }
 
     $("#searchProt").on("keyup", function() {
-        var value = $(this).val();
+        var value = $(this).val().toLowerCase();
+        $(".geral table:eq(2) tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+        /*var value = $(this).val();
         // remove all highlighted text passing all em tags
         removeHighlighting($("table tr em"));
         $(".geral table:eq(2) tr").each(function(index) {
@@ -43,6 +47,6 @@ $(document).ready(function() {
                     $row.show();
                 }
             }
-        });
+        });*/
     });
 });
