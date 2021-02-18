@@ -35,7 +35,7 @@ $(document).ready(function() {
                     var pos = $(this).text().toLowerCase().indexOf(value);
                     if(pos > -1) {
                         show = true;
-                        addHighlighting($(this), $(this).text().substring(pos, value.length));
+                        addHighlighting($(this), $(this).text().substring(pos, pos + value.length));
                     }
                 });
                 
