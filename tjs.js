@@ -25,10 +25,18 @@ $(document).ready(function() {
 
     $("#searchProt").on("keyup", function() {
         var value = $("#searchProt").val().toLowerCase();
+        removeHighlighting($(".geral table:eq(2) tr em"));
+        
         $(".geral table:eq(2) tr").each(function(index) {
             if(index > 2) {
                 $(this).filter(function() {
-                  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    if($(this).text().toLowerCase().indexOf(value) > -1) {
+                        $(this).show();
+                        addHighlighting($(this).find('td:first'), value);
+                    }
+                    else {
+                        $(this).hide();
+                    }
                 });
             }
 
