@@ -12,8 +12,8 @@ th[colspan="12"]:hover {
 }
 
 input:not([type="checkbox, radius"]), textarea, select {
-    padding: 2px 0 2px 5px; 
-    background: #f2f2f2;
+    padding: 7px 0 7px 5px; 
+    background: #fff;
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
@@ -56,13 +56,13 @@ input[type="button"]:hover {
 #status_SEARCH_AP {
     position: absolute;
     margin-left: -180px;
-    margin-top: 2.3px;
+    margin-top: 2.2px;
 
 }
 #status_KEY {
     position: absolute;
     margin-left: -140px;
-    margin-top: 2.3px;
+    margin-top: 6px;
 }
 .row_acao .acao {
     padding-top: 15px;
