@@ -4,7 +4,7 @@ $(document).ready(function() {
         radioClass: 'iradio_square-blue',
         increaseArea: '1%'
     });
-    $(".geral table:eq(2)").before("<p style='text-align: right'><img src='imagens/lupa.gif' class='status' /> <input id='searchProt' type='text' /></p>");
+    $(".geral table:eq(2)").before("<p style='text-align: right' id='searchTable'><img src='imagens/lupa.gif' class='status' /> <input id='searchProt' type='text' /></p>");
     
     function addHighlighting(element, textToHighlight){
        var highlightedText = "<span class='highlight'>" + textToHighlight + "</span>";
