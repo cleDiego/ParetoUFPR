@@ -10,7 +10,7 @@ $(document).ready(function() {
        var text = element.text();
        var highlightedText = '<span class="highlight">' + textToHighlight + '</span>';
        var newText = text.replace(textToHighlight, highlightedText);
-       element.html(newText);
+       element.html(element.html().replace(textToHighlight, highlightedText));
     }
     
     function removeHighlighting(highlightedElement){
