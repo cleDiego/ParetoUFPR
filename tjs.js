@@ -34,7 +34,7 @@ $(document).ready(function() {
                     removeHighlighting(this);
                     if($(this).text().toLowerCase().indexOf(value) > -1) {
                         show = true;
-                        addHighlighting(this, value);
+                        addHighlighting($(this), value);
                     }
                 });
                 
