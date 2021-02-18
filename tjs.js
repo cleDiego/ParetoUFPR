@@ -31,11 +31,13 @@ $(document).ready(function() {
                 var show = false;
                 var td = [];
                 $(this).find('td').each (function(etd) {
-                    removeHighlighting(this);
-                    var pos = $(this).text().toLowerCase().indexOf(value);
-                    if(pos > -1) {
-                        show = true;
-                        addHighlighting($(this), $(this).text().substring(pos, pos + value.length));
+                    if(etd > 1) {
+                        removeHighlighting(this);
+                        var pos = $(this).text().toLowerCase().indexOf(value);
+                        if(pos > -1) {
+                            show = true;
+                            addHighlighting($(this), $(this).text().substring(pos, pos + value.length));
+                        }
                     }
                 });
                 
