@@ -10,8 +10,10 @@ $(document).ready(function() {
     }
     
     function addHighlighting(element, textToHighlight){
-       var highlightedText = "<span class='highlight'>" + textToHighlight + "</span>";
-       element.html(element.html().replace(textToHighlight, highlightedText));
+        var thref = element.href;
+        var highlightedText = "<span class='highlight'>" + textToHighlight + "</span>";
+        element.html(element.html().replace(textToHighlight, highlightedText));
+        element.href = thref;
     }
     
     function removeHighlighting(highlightedElement){
