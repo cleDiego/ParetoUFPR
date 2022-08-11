@@ -1,9 +1,9 @@
 $(document).ready(function() {
-    $('input[type=checkbox], input[type=radio]').iCheck({
+    /*$('input[type=checkbox], input[type=radio]').iCheck({
         checkboxClass: 'icheckbox_square-blue',
         radioClass: 'iradio_square-blue',
         increaseArea: '1%'
-    });
+    });*/
     
     if($(".geral table:eq(2) tr:eq(2) th:eq(2)").text().replace(/\W/g, '') == "Protocolo") {
         $(".geral table:eq(2)").before("<p style='text-align: right' id='searchTable'><img src='imagens/lupa.gif' class='status' /> <input id='searchProt' type='text' /></p>");
